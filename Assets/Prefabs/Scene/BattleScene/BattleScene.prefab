@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentScene: {fileID: 0}
-  ActiveUIPrefab: {fileID: 3295105302873482489, guid: da9ef318427fc3440ab06b7e681a984f,
+  ActiveUIPrefab: {fileID: 7498297777613031070, guid: da9ef318427fc3440ab06b7e681a984f,
     type: 3}
   CurrentActiveUI: {fileID: 0}
 --- !u!223 &1634521857524849306

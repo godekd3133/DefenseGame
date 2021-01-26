@@ -10,39 +10,35 @@ using UnityEditor;
 
 public class SceneManager : MonoBehaviour
 {
-	public static SceneManager instance;
+    public static SceneManager instance;
 
-	public ReadOnlyDictionary<string, Scene> Scenes;
-	public Scene CurrentActiveScene = null;
-	public Transform ActiveSceneParent;
-	
-	
-	private void Awake()
+    public ReadOnlyDictionary<string, Scene> Scenes;
+    public Scene CurrentActiveScene = null;
+    public Transform ActiveSceneParent;
+
+
+    private void Awake()
     {
-		instance = this;
+        instance = this;
     }
 
-    private void Start()
+    public void OnApplicationLoadSuccess()
     {
+        ChangeScene("TitleScene");
     }
 
-	public void OnApplicationLoad()
+    public void ChangeScene(string sceneName)
     {
-		ChangeScene("TitleScene");
-	}
+        if (CurrentActiveScene != null)
+        {
+            CurrentActiveScene.OnSceneUnload();
+            Destroy(CurrentActiveScene.gameObject);
+        }
 
-	public async void ChangeScene(string sceneName)
-	{
-		if (CurrentActiveScene != null)
-		{
-			CurrentActiveScene.OnSceneUnload();
-			Destroy(CurrentActiveScene.gameObject);
-		}
+        CurrentActiveScene = Instantiate(Scenes[sceneName].gameObject, ActiveSceneParent).GetComponent<Scene>();
 
-		CurrentActiveScene = Instantiate(Scenes[sceneName].gameObject, ActiveSceneParent).GetComponent<Scene>();
+        CurrentActiveScene.OnSceneLoad();
 
-		CurrentActiveScene.OnSceneLoad();
-
-		Debug.Log(sceneName + " Scene Loading Successed.");
-	}
+        Debug.Log(sceneName + " Scene Loading Successed.");
+    }
 }

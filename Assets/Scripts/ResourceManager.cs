@@ -253,7 +253,7 @@ public class ResourceManager : MonoBehaviour
         _sprites = new ReadOnlyDictionary<string, Sprite>(sprites);
         Loaded = true;
 
-        SceneManager.instance.OnApplicationLoad();
+        SceneManager.instance.OnApplicationLoadSuccess();
     }
 }
 
