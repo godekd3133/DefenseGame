@@ -27,10 +27,10 @@ public abstract class Scene : MonoBehaviour
     }
 
     //씬 로드/언로드 되었을때
-    public virtual void OnSceneLoad() 
+    public virtual void OnSceneLoad()
     {
         _sceneUIAdmin.OnSceneLoad();
-        _sceneEntityAdmin.OnSceneLoad(); 
+        _sceneEntityAdmin.OnSceneLoad();
     }
 
 

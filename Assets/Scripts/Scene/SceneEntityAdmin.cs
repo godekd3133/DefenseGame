@@ -13,8 +13,17 @@ public class SceneEntityAdmin : MonoBehaviour
 
     public void MakeEntityPool(string _Name, GameObject _Prefab, int _StartAlloc)
     {
-
+        MakeEntityPool(_Name, transform, _Prefab, _StartAlloc);
     }
+
+    public void MakeEntityPool(string _Name, Transform _Parent, GameObject _Prefab, int _StartAlloc)
+    {
+        EntityPool pool = new GameObject(_Name).AddComponent<EntityPool>();
+        pool.StartAllocSize = _StartAlloc;
+        pool.PoolingObject = _Prefab;
+        pool.transform.parent = _Parent;
+    }
+
 
     public void OnSceneFixedUpdate()
     {
