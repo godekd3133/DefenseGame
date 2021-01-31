@@ -12,11 +12,10 @@ public class EntityPool : MonoBehaviour
 
     [ReadOnly(true)] public int StartAllocSize = 5;
 
-    private void Awake()
+    private void Start()
     {
         for (int i = 0; i < StartAllocSize; i++)
             AddNewObject();
-
     }
 
     public GameObject GetObject()

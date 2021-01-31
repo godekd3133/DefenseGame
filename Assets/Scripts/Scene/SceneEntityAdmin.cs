@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 using UnityEditor.Build.Pipeline;
 
 using UnityEngine;
@@ -9,7 +10,15 @@ public class SceneEntityAdmin : MonoBehaviour
 {
     private Dictionary<string, EntityPool> _entityPools;
 
+    private GameObject EntityPoolPrefab;
+
     public EntityPool GetEntityPool(string _Name) => _entityPools[_Name];
+
+    private void Awake()
+    {
+        EntityPoolPrefab = new GameObject();
+        EntityPoolPrefab.hideFlags = HideFlags.HideInHierarchy;
+    }
 
     public void MakeEntityPool(string _Name, GameObject _Prefab, int _StartAlloc)
     {
@@ -18,10 +27,10 @@ public class SceneEntityAdmin : MonoBehaviour
 
     public void MakeEntityPool(string _Name, Transform _Parent, GameObject _Prefab, int _StartAlloc)
     {
-        EntityPool pool = new GameObject(_Name).AddComponent<EntityPool>();
+        EntityPool pool = Instantiate(EntityPoolPrefab, _Parent).AddComponent<EntityPool>();
         pool.StartAllocSize = _StartAlloc;
         pool.PoolingObject = _Prefab;
-        pool.transform.parent = _Parent;
+        pool.gameObject.name = _Name;
     }
 
 
@@ -39,6 +48,7 @@ public class SceneEntityAdmin : MonoBehaviour
 
     public void OnSceneUnload()
     {
+        Destroy(EntityPoolPrefab.gameObject);
     }
 
     public void OnSceneUpdate()

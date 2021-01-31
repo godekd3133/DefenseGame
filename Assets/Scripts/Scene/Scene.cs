@@ -7,56 +7,53 @@ using UnityEngine;
 
 public abstract class Scene : MonoBehaviour
 {
-    private SceneEntityAdmin _sceneEntityAdmin;
-    private SceneUIAdmin _sceneUIAdmin;
-    private SceneCamera _sceneCamera;
     private Dictionary<Type, object> _sceneManager;
 
-    public SceneCamera Camera { get; }
-    public SceneUIAdmin UIAdmin { get; }
-    public SceneEntityAdmin EntityAdmin { get; }
+    public SceneCamera Camera { get; private set; }
+    public SceneUIAdmin UIAdmin { get; private set; }
+    public SceneEntityAdmin EntityAdmin { get; private set; }
     public T Manager<T>() => (T)_sceneManager[typeof(T)];
 
     private void Awake()
     {
         _sceneManager = new Dictionary<Type, object>();
 
-        _sceneEntityAdmin = GetComponentInChildren<SceneEntityAdmin>();
-        _sceneCamera = GetComponentInChildren<SceneCamera>();
-        _sceneUIAdmin = GetComponentInChildren<SceneUIAdmin>();
+        EntityAdmin = GetComponentInChildren<SceneEntityAdmin>();
+        Camera = GetComponentInChildren<SceneCamera>();
+        UIAdmin = GetComponentInChildren<SceneUIAdmin>();
     }
 
     //씬 로드/언로드 되었을때
     public virtual void OnSceneLoad()
     {
-        _sceneUIAdmin.OnSceneLoad();
-        _sceneEntityAdmin.OnSceneLoad();
+        EntityAdmin.OnSceneLoad();
+        UIAdmin.OnSceneLoad();
     }
 
 
     public virtual void OnSceneUnload()
     {
-        _sceneUIAdmin.OnSceneUnload();
-        _sceneEntityAdmin.OnSceneUnload();
+        EntityAdmin.OnSceneUnload();
+        UIAdmin.OnSceneUnload();
     }
 
     //Update
     public virtual void OnSceneUpdate()
     {
-        _sceneUIAdmin.OnSceneUpdate();
-        _sceneEntityAdmin.OnSceneUpdate();
+        EntityAdmin.OnSceneUpdate();
+        UIAdmin.OnSceneUpdate();
     }
 
     public virtual void OnSceneLateUpdate()
     {
-        _sceneUIAdmin.OnSceneLateUpdate();
-        _sceneEntityAdmin.OnSceneLateUpdate();
+        EntityAdmin.OnSceneLateUpdate();
+        UIAdmin.OnSceneLateUpdate();
     }
 
     public virtual void OnSceneFixedUpdate()
     {
-        _sceneUIAdmin.OnSceneFixedUpdate();
-        _sceneEntityAdmin.OnSceneFixedUpdate();
+        EntityAdmin.OnSceneFixedUpdate();
+        UIAdmin.OnSceneFixedUpdate();
     }
 
     private void Update()

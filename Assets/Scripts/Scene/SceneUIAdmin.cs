@@ -20,7 +20,7 @@ public class SceneUIAdmin : MonoBehaviour
 
     public void OnSceneLoad()
     {
-        CurrentScene = SceneManager.instance.CurrentActiveScene;
+        CurrentScene = SceneManager.instance.GetCurrentActiveScene<Scene>();
 
         CurrentActiveUI = Instantiate(ActiveUIPrefab.gameObject, transform).GetComponent<SceneUI>();
 

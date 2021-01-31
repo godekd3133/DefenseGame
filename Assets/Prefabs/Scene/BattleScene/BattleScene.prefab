@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1099d645c1ece40a4ccbe975b75bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCamera: {fileID: 4409224340851016669}
 --- !u!1 &3354068402379671431
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3522549030393201313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9139395741145304559}
-  - component: {fileID: 5841902182770079686}
+  - component: {fileID: 192882299842033318}
   m_Layer: 0
   m_Name: BattleScene
   m_TagString: Untagged
@@ -350,7 +352,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5841902182770079686
+--- !u!114 &192882299842033318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,6 +361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7564599504649508819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752c9843467bacf4b8c680049968a9e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 26e306020a14c094e86e205e2e9be1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: {fileID: 7951146248100322630, guid: ae5337b6ad1d4a648ada1314277b2de0, type: 3}

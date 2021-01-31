@@ -13,7 +13,10 @@ public class SceneManager : MonoBehaviour
     public static SceneManager instance;
 
     public ReadOnlyDictionary<string, Scene> Scenes;
-    public Scene CurrentActiveScene = null;
+    private Scene CurrentActiveScene = null;
+    public T GetCurrentActiveScene<T>() where T : Scene
+    { return CurrentActiveScene as T; }
+
     public Transform ActiveSceneParent;
 
 
